@@ -3,8 +3,8 @@ package bankAccount;
 public class Account {
 	
 	private String name;
-	private double numberAccount;
-	private double balance;
+	private long numberAccount;
+	protected double balance;
 	
 	/**
 	 * create bank account 
@@ -12,7 +12,7 @@ public class Account {
 	 * @param nrAccount numer account
 	 * @param b start bakance
 	 */
-	public Account(String n, double nrAccount, double b)
+	public Account(String n, long nrAccount, double b)
 	{
 		this.name = n;
 		this.numberAccount = nrAccount;
@@ -22,8 +22,8 @@ public class Account {
 	public void show()
 	{
 		System.out.println("User name : " + name + 
-				"\n Number Account : " + numberAccount + 
-				"\n Balance : " + balance);
+				"\nNumber Account : " + numberAccount + 
+				"\nBalance : " + balance + "zl");
 	}
 	
 	@Override
@@ -45,6 +45,15 @@ public class Account {
 			throw new IllegalArgumentException("Amount can't be negative");
 		
 		this.balance += money;
+	}
+	
+	/**
+	 * 
+	 * @return balance
+	 */
+	public double getBalance() 
+	{
+		return this.balance;
 	}
 	
 	/**
