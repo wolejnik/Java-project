@@ -24,7 +24,11 @@ public class Range {
 	 */
 	public boolean contains(int number)
 	{
-		return (number >= low && number <= high);
+		if (number >= low && number <= high)
+		{
+			return true;
+		}
+		return false;
 	}
 
 }
