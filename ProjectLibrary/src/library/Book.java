@@ -1,10 +1,12 @@
 package library;
 
+import java.util.Random;
+import java.util.Scanner;
 
-import java.util.*;
+import library.Book.BookEnum;
 
-public class Book {
-	
+public class Book{
+
 	enum BookEnum {AUTOBIOGRAPHY, CLASSIC, COMEDY, COOKBOOK,
 		CRIME, DRAMA, ENCYCLOPEDIA, FANTASY, NOVEL};
 	
@@ -31,6 +33,7 @@ public class Book {
 		this.devoted = 0;
 	}
 	
+	
 	/**
 	 * create book in library
 	 * @param id id book
@@ -43,20 +46,21 @@ public class Book {
 	 * @param b the number of boorow
 	 * @param d the muber of devoted
 	 */
+	
 	public void createBook(int id, String t, String aName, String aSurname, int d, BookEnum tBook,
-				boolean s, int b, int de)
-	{
-		this.id = id;
-		this.title = t;
-		this.autorName = aName;
-		this.autorSurname = aSurname;
-		this.date = d;
-		this.typeBook = tBook;
-		this.status = s;
-		this.manyBorrow = b;
-		this.devoted = de;
-	}
-
+			boolean s, int b, int de)
+{
+	this.id = id;
+	this.title = t;
+	this.autorName = aName;
+	this.autorSurname = aSurname;
+	this.date = d;
+	this.typeBook = tBook;
+	this.status = s;
+	this.manyBorrow = b;
+	this.devoted = de;
+}
+	
 	@Override
 	public String toString()
 	{
@@ -102,6 +106,56 @@ public class Book {
 		
 	}
 	
+	/**
+	 * 
+	 * @param ebook edit book
+	 */
+	public void editBook( Book ebook) {
+		System.out.println(ebook);
+		
+		Scanner in = new Scanner(System.in);
+		System.out.println("Select value to edit book (Name, Surname, Title, Date, Type): ");
+		String choice = in.nextLine();
+		
+		switch(choice)
+		{
+		case "Name" :
+			Scanner inName = new Scanner(System.in);
+			System.out.println("Autor name book : ");
+			this.autorName = inName.nextLine();
+			break;
+		case "Surname" :
+			Scanner inSurname = new Scanner(System.in);
+			System.out.println("Autor surname book : ");
+			this.autorSurname = inSurname.nextLine();
+			break;
+		case "Title" :
+			Scanner inTitle = new Scanner(System.in);
+			System.out.println("Title book : ");
+			this.title = inTitle.nextLine();
+			break;
+		case "Date" :
+			Scanner inDate = new Scanner(System.in);
+			System.out.println("Publication date : ");
+			this.date = inDate.nextInt();
+			break;
+			
+		case "Type" :
+			Scanner inType = new Scanner(System.in);
+			System.out.println("Type book : ");
+			String typeBookSt = inType.next();
+			//convert String to enum
+			BookEnum typebook = BookEnum.valueOf(typeBookSt.toUpperCase());
+			this.typeBook = typebook;
+			break;
+		}
+		System.out.println(ebook);
+	}
+	
+	/**
+	 * 
+	 * @return true if is borrowed, false if ins't borrowed
+	 */
 	public boolean getBorrow() 
 	{
 		if (status == true)
@@ -113,6 +167,16 @@ public class Book {
 		return false;
 	}
 	
+	public void borrowBook()
+	{
+		status = true;
+		manyBorrow += 1;
+	}
+	
+	public void retuenBook()
+	{
+		status = false;
+		devoted += 1;
+	}
+	
 }
-
-

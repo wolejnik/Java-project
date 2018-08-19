@@ -2,32 +2,27 @@ package library;
 
 import library.Book.BookEnum;
 
-/**
- * projekt library
- * @author Olejnik
- *
- */
 public class LibraryMain {
-	
+
 	public static void main(String[] args)
 	{
+		Library lib = new Library();
+		lib.books.add(new Book());
+		lib.books.add(new Book());
 		
-		//tab object class Book
-		Book[] book = new Book[10];
-		for(int i=0; i < book.length; i++)
-			book[i] = new Book();
+		lib.books.get(0).createBook(12, "Wiedzmin Krew elfów", "Andrzej", "Sapkowski", 1994, BookEnum.FANTASY, false, 0, 0);
+		System.out.println(lib.books.get(0));
+		System.out.println(lib.bookInLibrary());
+		//lib.books.get(1).addBook();
+		//System.out.println(lib.books.get(1));
 		
-		book[0].createBook(100, "The Lord of the Rings", "J.R.R.", "Tolkien", 1999, BookEnum.NOVEL, true, 0, 0);
+		System.out.println("---------------------");
 		
-		System.out.println(book[0]);
-		
-		book[1].addBook();
-		
-		System.out.println("-----------------");
-		System.out.println(book[1]);
-		
-		book[0].getBorrow();
-		
+		lib.books.get(0).borrowBook();
+		System.out.println(lib.books.get(0));
+		lib.books.get(0).retuenBook();
+		System.out.println(lib.books.get(0));
 	}
-
+	
+	
 }
