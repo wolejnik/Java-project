@@ -1,11 +1,12 @@
 package library;
 
+import java.util.Comparator;
 import java.util.Random;
 import java.util.Scanner;
 
 import library.Book.BookEnum;
 
-public class Book{
+public class Book {
 
 	enum BookEnum {AUTOBIOGRAPHY, CLASSIC, COMEDY, COOKBOOK,
 		CRIME, DRAMA, ENCYCLOPEDIA, FANTASY, NOVEL};
@@ -75,7 +76,7 @@ public class Book{
 	{
 		
 		Random r = new Random();
-		this.id = r.nextInt(100) + 1;
+		this.id = r.nextInt(10) + 1;
 		
 		Scanner input = new Scanner(System.in);
 		System.out.println("Title book : ");
@@ -105,6 +106,26 @@ public class Book{
 		this.devoted = 0;
 		
 	}
+	
+	/**
+	 * Comparator for sorting the list by Book title
+	 */
+	public static Comparator<Book> BookTitleComparator = new Comparator<Book>() {
+
+		@Override
+		public int compare(Book b1, Book b2) {
+			
+			String BookTitle1 = b1.getTitle().toUpperCase();
+			String BookTitle2 = b2.getTitle().toUpperCase();
+			
+			//ascending order
+			
+			return BookTitle1.compareTo(BookTitle2);
+			
+			//descending order
+			//return BookTitle2.compareTo(BookTitle1);
+		}
+	};
 	
 	/**
 	 * 
@@ -173,10 +194,72 @@ public class Book{
 		manyBorrow += 1;
 	}
 	
-	public void retuenBook()
+	public void returnBook()
 	{
 		status = false;
 		devoted += 1;
 	}
+
+
+	public String getTitle() {
+		return title;
+	}
+
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+
+	public String getAutorName() {
+		return autorName;
+	}
+
+
+	public void setAutorName(String autorName) {
+		this.autorName = autorName;
+	}
+
+
+	public BookEnum getTypeBook() {
+		return typeBook;
+	}
+
+
+	public void setTypeBook(BookEnum typeBook) {
+		this.typeBook = typeBook;
+	}
+
+
+	public int getDevoted() {
+		return devoted;
+	}
+
+
+	public void setDevoted(int devoted) {
+		this.devoted = devoted;
+	}
+
+
+	public int getManyBorrow() {
+		return manyBorrow;
+	}
+
+
+	public boolean isStatus() {
+		return status;
+	}
+
+
+	public void setStatus(boolean status) {
+		this.status = status;
+	}
+
+
+	public void setManyBorrow(int manyBorrow) {
+		this.manyBorrow = manyBorrow;
+	}
 	
+	
+
 }
