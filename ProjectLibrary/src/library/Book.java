@@ -107,6 +107,15 @@ public class Book {
 		
 	}
 	
+	public String getAutorSurname() {
+		return autorSurname;
+	}
+
+
+	public void setAutorSurname(String autorSurname) {
+		this.autorSurname = autorSurname;
+	}
+
 	/**
 	 * Comparator for sorting the list by Book title
 	 */
